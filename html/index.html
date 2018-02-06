@@ -1,0 +1,37 @@
+<html>
+<head>
+<title> Practica 1 </title>
+<link rel="shortcut icon" type="image/png" href="../img/ilias.png" />
+</head>
+<body>
+<center>
+<h1> TEST SERVLET: GET METHOD </h1>
+<form action="http://localhost:8080/TestServlet/GetExample" method=get>
+Name: <input type=text name=username>
+<input type=submit value=Send>
+</form>
+</center>
+</body>
+<script>
+package pack;
+import java.io.*;
+import java.util.Date;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class GetExample extends HttpServlet {
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+out.println("<html><head><title>Servlet Test</title></head>");
+out.println("<body ><center><h1> THIS IS A SERVLET TEST </h1>");
+String answer = request.getParameter("username");
+out.println("<h2> The username is: " + answer + "</h2>");
+Date date = new Date();
+out.println("<h3>The time at the server is " + date.toString() +"</h3>");
+out.println("</center></body></html>");
+out.close();
+}
+}
+</script>
+</html>
